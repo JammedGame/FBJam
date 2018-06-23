@@ -14,7 +14,7 @@ const SDK_PATH = 'https://connect.facebook.net/en_US/fbinstant.6.0.js'
 const BUILD_FOLDER = './build'
 const LIB_FILES = 
 [
-    "node_modules/engineer-js/build/engineer.js"
+    "node_modules/phaser-ce/build/phaser.js"
 ]
 
 function make() {

@@ -2,7 +2,7 @@ function preload() {}
 function create() {}
 function update() {}
 
-var factor = 1;
+var factor = window.innerWidth / 270.0;
 
 var game = new Phaser.Game(270 * factor, 480 * factor, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
