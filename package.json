@@ -14,14 +14,15 @@
     "gulp-webserver": "^0.9.1",
     "gulp-zip": "^4.1.0",
     "open": "^0.0.5",
+    "phaser-ce": "^2.10.6",
     "request": "^2.83.0"
   },
   "devDependencies": {
     "gulp-cli": "^2.0.1"
   },
   "scripts": {
-    "mock" : "gulp mock",
-    "test" : "gulp test",
-    "push" : "gulp push"
+    "mock": "gulp mock",
+    "test": "gulp test",
+    "push": "gulp push"
   }
 }
