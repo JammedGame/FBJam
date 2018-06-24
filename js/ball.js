@@ -1,12 +1,13 @@
 var offset = 0;
 
-var speed = 3;
+var speed = 0;
 
 var lane = 0;
 
 function updateBall()
 {
     offset += speed;
+    if(speed != 0) speed += 0.0003;
 }
 
 function updateBallPosition()
@@ -16,6 +17,11 @@ function updateBallPosition()
 
 function changeLane(event)
 {
+    if(speed == 0)
+    {
+        speed = 3;
+        return;
+    }
     if(event.x > 135 * factor)
     {
         if(lane != 1) lane++;

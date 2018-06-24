@@ -19,9 +19,12 @@ function loadScene() {
     game.load.image('back', 'img/back.png');
     game.load.onLoadComplete.add(function()
     {
-        gameObjects["back"] = game.add.sprite(0, -240, 'back');
+        gameObjects["back"] = game.add.sprite(0, -240 * factor, 'back');
         gameObjects["back"].height = 720 * factor;
         gameObjects["back"].width = 270 * factor;
+        gameObjects["back2"] = game.add.sprite(0, -960 * factor, 'back');
+        gameObjects["back2"].height = 720 * factor;
+        gameObjects["back2"].width = 270 * factor;
         loadProgress += 50;
         FBInstant.setLoadingProgress(loadProgress);
 
@@ -31,7 +34,7 @@ function loadScene() {
     game.load.image('ball', 'img/ball.png');
     game.load.onLoadComplete.add(function()
     {
-        gameObjects["ball"] = game.add.sprite((135 - 22) * factor, (440 - 22) * factor, 'ball');
+        gameObjects["ball"] = game.add.sprite((135 - 22) * factor, (410 - 22) * factor, 'ball');
         gameObjects["ball"].height = 44 * factor;
         gameObjects["ball"].width = 44 * factor;
         loadProgress += 50;
