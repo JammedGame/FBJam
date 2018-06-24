@@ -11,6 +11,7 @@ function checkStatus()
             {
                 dead = true;
                 speed = 0;
+                stopBallAnim();
                 console.log("dead");
                 break;
             }

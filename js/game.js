@@ -33,6 +33,7 @@ function checkLoadFinished()
 
 function loadScene()
 {
+    game.input.mouse.capture = true;
 
     game.load.image('back', 'img/back.png');
     game.load.onLoadComplete.add(function()
@@ -50,10 +51,11 @@ function loadScene()
     }, this);
     game.load.start();
 
-    game.load.image('ball', 'img/ball.png');
+    game.load.spritesheet('ball', 'img/ball.png', 512, 512);
     game.load.onLoadComplete.add(function()
     {
         gameObjects["ball"] = game.add.sprite((135 - 22) * factor, (410 - 22) * factor, 'ball');
+        gameObjects["ball"].animations.add('roll');
         gameObjects["ball"].height = 44 * factor;
         gameObjects["ball"].width = 44 * factor;
         loadProgress += 20;

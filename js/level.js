@@ -16,19 +16,25 @@ function updateLevel()
     }
     for(var i = stones.length - 1; i >= 0; i--)
     {
-        if(stones[i].y > 720 * offset || stones[i].y < -15000) stones.splice(i,1);
+        if(stones[i].y > 720 * factor)
+        {
+            this.game.world.remove(stones[i]);
+            stones.splice(i,1);
+        }
     }
-    var offDiff = Math.floor(offset / 240 + 1) - loadedElements;
+    var offDiff = Math.floor(offset / (240 * factor) + 1) - loadedElements;
+    var oldLoaded = loadedElements;
+    loadedElements += offDiff;
     if(offDiff < 0) offDiff = 0;
     for(var i = 0; i < offDiff; i++)
     {
-        if(loadedElements + i < 1) continue;
-        var variation = Math.floor(Math.random() * 12);
+        if(oldLoaded + i < 3) continue;
+        var variation = Math.floor(Math.random() * 9);
         if(variation < 6)
         {
             var lane = Math.floor(Math.random() * 3) - 1;
             var art = Math.floor(Math.random() * 3);
-            var stone = game.add.sprite((135 - 27 + lane * 60) * factor, (-(loadedElements + i) * 240 - 27) * factor, 'stone'+art);
+            var stone = game.add.sprite((135 - 27 + lane * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
             stone.height = 54 * factor;
             stone.width = 54 * factor;
             stone.lane = lane;
@@ -39,7 +45,7 @@ function updateLevel()
         {
             var lane = Math.floor(Math.random() * 3) - 1;
             var art = Math.floor(Math.random() * 3);
-            var stone = game.add.sprite((135 - 27 + lane * 60) * factor, (-(loadedElements + i) * 240 - 27) * factor, 'stone'+art);
+            var stone = game.add.sprite((135 - 27 + lane * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
             stone.height = 54 * factor;
             stone.width = 54 * factor;
             stone.z = 0.2;
@@ -54,7 +60,7 @@ function updateLevel()
                 else lane2 = -1;
             }
             art = Math.floor(Math.random() * 3);
-            stone = game.add.sprite((135 - 27 + lane2 * 60) * factor, (-(loadedElements + i) * 240 - 27) * factor, 'stone'+art);
+            stone = game.add.sprite((135 - 27 + lane2 * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
             stone.height = 54 * factor;
             stone.width = 54 * factor;
             stone.z = 0.2;
@@ -62,6 +68,5 @@ function updateLevel()
             stones.push(stone);
         }
     }
-    loadedElements += offDiff;
     updateLevelCurrent = false;
 }
