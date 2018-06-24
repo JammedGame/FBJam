@@ -25,6 +25,27 @@ function update()
 
 var factor = window.innerWidth / 270.0;
 
+function setFontSize()
+{
+    var bicon = document.getElementById("boards-icon");
+    bicon.style.fontSize = 30*factor + "px";
+    var mainscore = document.getElementById("score");
+    mainscore.style.fontSize = 30*factor + "px";
+    for(var i = 0; i < 5; i++)
+    {
+        var name = document.getElementById("ent"+i+"name");
+        name.style.fontSize = 12*factor + "px";
+        name.style.top = (20+i*30 + 3)*factor + "px";
+        var score = document.getElementById("ent"+i+"score");
+        score.style.fontSize = 22*factor + "px";
+        score.style.top = (20+i*30 - 1)*factor + "px";
+        var img = document.getElementById("img"+i);
+        img.style.width = 20*factor + "px";
+        img.style.height = 20*factor + "px";
+        img.style.top = (i*4 + 3)*factor + "px";
+    }
+}
+
 var game = new Phaser.Game(270 * factor, 480 * factor, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
 var gameObjects = {};
@@ -52,6 +73,17 @@ var ui_layer;
 
 function loadScene()
 {
+    setFontSize();
+
+    game.load.audio('boden', ['img/trance.mp3']);
+    game.load.onLoadComplete.add(function()
+    {
+        var music = game.add.audio('boden');
+        music.play();
+
+    }, this);
+    game.load.start();
+
     game_layer = game.add.group();
     fog_layer = game.add.group();
     ui_layer = game.add.group();

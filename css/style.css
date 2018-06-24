@@ -6,13 +6,13 @@ body {
     overflow: hidden;
 }
 
-.score
+.score-main
 {
     position: absolute;
     top: 0px;
-    left: 0px;
+    left: 0%;
+    width:100%;
     text-align: center;
-    width: 100%;
     font-size: 80px;
     color: #444466;
     font-family: Arial, Helvetica, sans-serif;
@@ -23,7 +23,7 @@ body {
     position: absolute;
     top: 15px;
     left: 15px;
-    font-size: 80px;
+    font-size: 30px;
     color:#FFD700;
 }
 
@@ -49,6 +49,7 @@ body {
     padding: 0px;
     height:50px;
     width:100%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .imgdiv
 {
@@ -68,18 +69,18 @@ body {
 {
     position: absolute;
     top:0px;
-    left:35%;
+    left:32%;
     height:50px;
     margin:0px;
     padding: 0px;
     color:white;
-    font-size: 50px;
+    font-size: 30px;
 }
 .score
 {
     position: absolute;
     top:0px;
-    left:30%;
+    left:65%;
     height:50px;
     margin:0px;
     padding: 0px;

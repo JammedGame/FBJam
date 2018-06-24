@@ -1,6 +1,7 @@
 var playerID;
 var playerName;
 var playerImage;
+
 window.onload = function()
 {
     console.log(FBInstant.player);
