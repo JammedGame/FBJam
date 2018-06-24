@@ -34,7 +34,7 @@ function updateLevel()
         {
             var lane = Math.floor(Math.random() * 3) - 1;
             var art = Math.floor(Math.random() * 3);
-            var stone = game.add.sprite((135 - 27 + lane * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
+            var stone = game_layer.create((135 - 27 + lane * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
             stone.height = 54 * factor;
             stone.width = 54 * factor;
             stone.lane = lane;
@@ -45,7 +45,7 @@ function updateLevel()
         {
             var lane = Math.floor(Math.random() * 3) - 1;
             var art = Math.floor(Math.random() * 3);
-            var stone = game.add.sprite((135 - 27 + lane * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
+            var stone = game_layer.create((135 - 27 + lane * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
             stone.height = 54 * factor;
             stone.width = 54 * factor;
             stone.z = 0.2;
@@ -60,7 +60,7 @@ function updateLevel()
                 else lane2 = -1;
             }
             art = Math.floor(Math.random() * 3);
-            stone = game.add.sprite((135 - 27 + lane2 * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
+            stone = game_layer.create((135 - 27 + lane2 * 60) * factor, (-(oldLoaded + i) * 240 - 27) * factor, 'stone'+art);
             stone.height = 54 * factor;
             stone.width = 54 * factor;
             stone.z = 0.2;
