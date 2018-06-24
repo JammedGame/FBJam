@@ -3,4 +3,16 @@ body {
     color:#fff;
     margin: 0px;
     padding: 0px;
+    overflow: hidden;
+}
+
+.score
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+    font-size: 80px;
+    color: black;
 }

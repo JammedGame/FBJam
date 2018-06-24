@@ -12,7 +12,7 @@ function checkStatus()
                 dead = true;
                 speed = 0;
                 stopBallAnim();
-                console.log("dead");
+                gameObjects["gameover"].visible = true;
                 break;
             }
         }

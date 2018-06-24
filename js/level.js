@@ -6,6 +6,17 @@ var stoner;
 
 var updateLevelCurrent = false;
 
+function resetLevel()
+{
+    for(var i = 0; i < stones.length; i++)
+    {
+        stones[i].visible = false;
+        this.game.world.remove(stones[i]);
+    }
+    stones = [];
+    loadedElements = 0;
+}
+
 function updateLevel()
 {
     if(updateLevelCurrent) return;

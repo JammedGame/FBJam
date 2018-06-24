@@ -2,7 +2,17 @@ function preload() {}
 function create() {}
 function update() 
 {
-    if(dead) return;
+    if(dead)
+    {
+        if(game.input.activePointer.isDown)
+        {
+            dead = false;
+            resetBall();
+            resetLevel();
+            updateBack();
+            return;
+        }
+    }
     if(gameObjects["fog"]) game.world.bringToTop(gameObjects["fog"]);
     updateBall();
     updateLevel();
@@ -32,14 +42,18 @@ function checkLoadFinished()
     }
 }
 
+var game_layer;
+var fog_layer;
+var ui_layer;
+
 function loadScene()
 {
-    var game_layer = game.add.group();
-    var fog_layer = game.add.group();
-    var ui_layer = game.add.group();
+    game_layer = game.add.group();
+    fog_layer = game.add.group();
+    ui_layer = game.add.group();
 
     game.world.bringToTop(fog_layer);
-    //game.world.bringToTop(ui_layer);
+    game.world.bringToTop(ui_layer);
 
     game.input.mouse.capture = true;
 
@@ -80,7 +94,34 @@ function loadScene()
         gameObjects["ball"].animations.add('roll');
         gameObjects["ball"].height = 44 * factor;
         gameObjects["ball"].width = 44 * factor;
-        loadProgress += 30;
+        loadProgress += 25;
+        FBInstant.setLoadingProgress(loadProgress);
+        checkLoadFinished();
+
+    }, this);
+    game.load.start();
+
+    game.load.image('play', 'img/play.png');
+    game.load.onLoadComplete.add(function()
+    {
+        gameObjects["play"] = ui_layer.create(0, 0, 'play');
+        gameObjects["play"].height = 480 * factor;
+        gameObjects["play"].width = 270 * factor;
+        loadProgress += 8;
+        FBInstant.setLoadingProgress(loadProgress);
+        checkLoadFinished();
+
+    }, this);
+    game.load.start();
+
+    game.load.image('gameover', 'img/gameover.png');
+    game.load.onLoadComplete.add(function()
+    {
+        gameObjects["gameover"] = ui_layer.create(0, 0, 'gameover');
+        gameObjects["gameover"].height = 480 * factor;
+        gameObjects["gameover"].width = 270 * factor;
+        gameObjects["gameover"].visible = false;
+        loadProgress += 9;
         FBInstant.setLoadingProgress(loadProgress);
         checkLoadFinished();
 
@@ -90,7 +131,7 @@ function loadScene()
     game.load.image('stone0', 'img/stone0.png');
     game.load.onLoadComplete.add(function()
     {
-        loadProgress += 15;
+        loadProgress += 11;
         FBInstant.setLoadingProgress(loadProgress);
         checkLoadFinished();
 
@@ -100,7 +141,7 @@ function loadScene()
     game.load.image('stone1', 'img/stone1.png');
     game.load.onLoadComplete.add(function()
     {
-        loadProgress += 15;
+        loadProgress += 11;
         FBInstant.setLoadingProgress(loadProgress);
         checkLoadFinished();
 
@@ -110,7 +151,7 @@ function loadScene()
     game.load.image('stone2', 'img/stone2.png');
     game.load.onLoadComplete.add(function()
     {
-        loadProgress += 15;
+        loadProgress += 11;
         FBInstant.setLoadingProgress(loadProgress);
         checkLoadFinished();
 

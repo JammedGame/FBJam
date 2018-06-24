@@ -8,6 +8,20 @@ var mouseDown = false;
 var mouseHandled = false;
 var mouseX = 0;
 
+function resetBall()
+{
+    offset = 0;
+    score.innerText = Math.floor(offset / 100);
+    lane = 0;
+    speed = 0;
+    gameObjects["play"].visible = true;
+    gameObjects["gameover"].visible = false;
+    mouseDown = false;
+    mouseHandled = true;
+    mouseX = 0;
+    updateBallPosition();
+}
+
 function updateBall()
 {
     mouseDown = game.input.activePointer.isDown;
@@ -16,6 +30,7 @@ function updateBall()
     if(mouseDown) changeLane();
     offset += speed * factor;
     if(speed != 0) speed += 0.003;
+    score.innerText = Math.floor(offset / 100);
 }
 
 function playBallAnim()
@@ -40,6 +55,8 @@ function changeLane()
     {
         speed = 3;
         playBallAnim();
+        gameObjects["play"].visible = false;
+        mouseHandled = true;
         return;
     }
     if(mouseX > 135 * factor)
