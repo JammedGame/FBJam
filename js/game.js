@@ -2,8 +2,11 @@ function preload() {}
 function create() {}
 function update() 
 {
+    if(dead) return;
     updateBall();
+    updateLevel();
     updateBack();
+    checkStatus();
 }
 
 var factor = window.innerWidth / 270.0;
@@ -40,7 +43,7 @@ function loadScene()
         gameObjects["back2"] = game.add.sprite(0, -960 * factor, 'back');
         gameObjects["back2"].height = 720 * factor;
         gameObjects["back2"].width = 270 * factor;
-        loadProgress += 35;
+        loadProgress += 30;
         FBInstant.setLoadingProgress(loadProgress);
         checkLoadFinished();
 
@@ -63,7 +66,7 @@ function loadScene()
     game.load.image('stone0', 'img/stone0.png');
     game.load.onLoadComplete.add(function()
     {
-        loadProgress += 20;
+        loadProgress += 15;
         FBInstant.setLoadingProgress(loadProgress);
         checkLoadFinished();
 
@@ -73,7 +76,17 @@ function loadScene()
     game.load.image('stone1', 'img/stone1.png');
     game.load.onLoadComplete.add(function()
     {
-        loadProgress += 20;
+        loadProgress += 15;
+        FBInstant.setLoadingProgress(loadProgress);
+        checkLoadFinished();
+
+    }, this);
+    game.load.start();
+
+    game.load.image('stone2', 'img/stone2.png');
+    game.load.onLoadComplete.add(function()
+    {
+        loadProgress += 15;
         FBInstant.setLoadingProgress(loadProgress);
         checkLoadFinished();
 
