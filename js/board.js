@@ -28,3 +28,21 @@ function getScores()
     })
     .catch(error => console.error(error));
 }
+
+var boardVisible = false;
+var board = document.getElementById("score-board");
+
+function toggleBoards()
+{
+    console.log("boards?");
+    if(boardVisible)
+    {
+        board.style.display = "none";
+        boardVisible = false;
+    }
+    else
+    {
+        board.style.display = "block";
+        boardVisible = true;
+    }
+}
