@@ -12,7 +12,7 @@ var game = new Phaser.Game(270 * factor, 480 * factor, Phaser.AUTO, '', { preloa
 
 var gameObjects = {};
 
-var loadProgress = 0;
+var loadProgress = 5;
 
 function loadScene() {
 
@@ -25,7 +25,7 @@ function loadScene() {
         gameObjects["back2"] = game.add.sprite(0, -960 * factor, 'back');
         gameObjects["back2"].height = 720 * factor;
         gameObjects["back2"].width = 270 * factor;
-        loadProgress += 50;
+        loadProgress += 35;
         FBInstant.setLoadingProgress(loadProgress);
 
     }, this);
@@ -37,7 +37,30 @@ function loadScene() {
         gameObjects["ball"] = game.add.sprite((135 - 22) * factor, (410 - 22) * factor, 'ball');
         gameObjects["ball"].height = 44 * factor;
         gameObjects["ball"].width = 44 * factor;
-        loadProgress += 50;
+        loadProgress += 20;
+        FBInstant.setLoadingProgress(loadProgress);
+        if(loadProgress)
+        FBInstant.startGameAsync().then(function()
+        {
+            
+        });
+
+    }, this);
+    game.load.start();
+
+    game.load.image('stone0', 'img/stone0.png');
+    game.load.onLoadComplete.add(function()
+    {
+        loadProgress += 20;
+        FBInstant.setLoadingProgress(loadProgress);
+
+    }, this);
+    game.load.start();
+
+    game.load.image('stone1', 'img/stone1.png');
+    game.load.onLoadComplete.add(function()
+    {
+        loadProgress += 20;
         FBInstant.setLoadingProgress(loadProgress);
 
     }, this);
