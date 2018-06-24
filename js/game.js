@@ -7,6 +7,7 @@ function update()
         if(game.input.activePointer.isDown)
         {
             dead = false;
+            score.style.top = "0px";
             resetBall();
             resetLevel();
             updateBack();
@@ -157,4 +158,6 @@ function loadScene()
 
     }, this);
     game.load.start();
+
+    score.style.fontSize = 30 * factor;
 }

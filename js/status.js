@@ -13,6 +13,7 @@ function checkStatus()
                 speed = 0;
                 stopBallAnim();
                 gameObjects["gameover"].visible = true;
+                score.style.top = 253*factor + "px";
                 break;
             }
         }

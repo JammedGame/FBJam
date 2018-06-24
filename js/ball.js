@@ -8,6 +8,8 @@ var mouseDown = false;
 var mouseHandled = false;
 var mouseX = 0;
 
+var score = document.getElementById("score");
+
 function resetBall()
 {
     offset = 0;
