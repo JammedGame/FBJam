@@ -7,7 +7,9 @@ function update()
         if(game.input.activePointer.isDown)
         {
             dead = false;
+            deadScoreSaved = false;
             score.style.top = "0px";
+            Math.floor(offset / 100);
             resetBall();
             resetLevel();
             updateBack();
@@ -38,7 +40,8 @@ function checkLoadFinished()
         loadFinished = true;
         FBInstant.startGameAsync().then(function()
         {
-            
+            playerName = FBInstant.player.getName();
+            playerImage = FBInstant.player.getPhoto();
         });
     }
 }

@@ -1,4 +1,5 @@
 var dead = false;
+var deadScoreSaved = false;
 
 function checkStatus()
 {
@@ -14,6 +15,11 @@ function checkStatus()
                 stopBallAnim();
                 gameObjects["gameover"].visible = true;
                 score.style.top = 253*factor + "px";
+                if(playerID && !deadScoreSaved)
+                {
+                    deadScoreSaved = true;
+                    saveScore(playerID, playerName, playerImage, Math.floor(offset / 100));
+                }
                 break;
             }
         }
