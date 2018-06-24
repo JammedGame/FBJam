@@ -14,7 +14,22 @@ var gameObjects = {};
 
 var loadProgress = 5;
 
-function loadScene() {
+var loadFinished = false;
+
+function checkLoadFinished()
+{
+    if(loadProgress >= 100 && !loadFinished)
+    {
+        loadFinished = true;
+        FBInstant.startGameAsync().then(function()
+        {
+            
+        });
+    }
+}
+
+function loadScene()
+{
 
     game.load.image('back', 'img/back.png');
     game.load.onLoadComplete.add(function()
@@ -27,6 +42,7 @@ function loadScene() {
         gameObjects["back2"].width = 270 * factor;
         loadProgress += 35;
         FBInstant.setLoadingProgress(loadProgress);
+        checkLoadFinished();
 
     }, this);
     game.load.start();
@@ -39,11 +55,7 @@ function loadScene() {
         gameObjects["ball"].width = 44 * factor;
         loadProgress += 20;
         FBInstant.setLoadingProgress(loadProgress);
-        if(loadProgress)
-        FBInstant.startGameAsync().then(function()
-        {
-            
-        });
+        checkLoadFinished();
 
     }, this);
     game.load.start();
@@ -53,6 +65,7 @@ function loadScene() {
     {
         loadProgress += 20;
         FBInstant.setLoadingProgress(loadProgress);
+        checkLoadFinished();
 
     }, this);
     game.load.start();
@@ -62,6 +75,7 @@ function loadScene() {
     {
         loadProgress += 20;
         FBInstant.setLoadingProgress(loadProgress);
+        checkLoadFinished();
 
     }, this);
     game.load.start();
