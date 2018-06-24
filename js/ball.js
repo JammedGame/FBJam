@@ -7,7 +7,7 @@ var lane = 0;
 function updateBall()
 {
     offset += speed * factor;
-    if(speed != 0) speed += 0.0003;
+    if(speed != 0) speed += 0.003;
 }
 
 function updateBallPosition()

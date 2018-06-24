@@ -2,6 +2,7 @@ var dead = false;
 
 function checkStatus()
 {
+    if(!gameObjects["ball"]) return;
     for(var i = 0; i < stones.length; i++)
     {
         if(stones[i].lane == lane)

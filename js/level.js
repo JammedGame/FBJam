@@ -4,19 +4,22 @@ var loadedElements = 0;
 
 var stoner;
 
+var updateLevelCurrent = false;
+
 function updateLevel()
 {
+    if(updateLevelCurrent) return;
+    updateLevelCurrent = true;
     for(var i = 0; i < stones.length; i++)
     {
         stones[i].y += speed * factor;
     }
     for(var i = stones.length - 1; i >= 0; i--)
     {
-        if(stones[i].y > 720 * offset) stones.splice(i,1);
+        if(stones[i].y > 720 * offset || stones[i].y < -15000) stones.splice(i,1);
     }
-    var offDiff = Math.floor(offset % 240 + 1) - loadedElements;
+    var offDiff = Math.floor(offset / 240 + 1) - loadedElements;
     if(offDiff < 0) offDiff = 0;
-    //if(loadedElements > 0) offDiff = 0;
     for(var i = 0; i < offDiff; i++)
     {
         if(loadedElements + i < 1) continue;
@@ -60,4 +63,5 @@ function updateLevel()
         }
     }
     loadedElements += offDiff;
+    updateLevelCurrent = false;
 }
